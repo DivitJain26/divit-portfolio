@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { personalInfo } from '@/src/lib/portfolio-data';
@@ -16,7 +17,7 @@ export function HeroSection() {
         {[...Array(50)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-1 h-1 bg-amber-500 rounded-full"
+            className="absolute w-1 h-1 bg-brand-primary rounded-full"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
@@ -34,20 +35,20 @@ export function HeroSection() {
         ))}
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-25 relative z-10">
+        <div className="grid md:grid-cols-2 gap-6 items-center">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
           >
             <motion.span
-              className="text-amber-500 font-medium text-lg"
+              className="text-brand-primary font-medium text-lg"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
             >
-              Hello, I&aposm
+              Hello, I&apos;m
             </motion.span>
             <motion.h1
               className="text-5xl md:text-7xl font-bold text-white mt-4 mb-6"
@@ -74,23 +75,23 @@ export function HeroSection() {
               {personalInfo.bio}
             </motion.p>
             <motion.div
-              className="flex flex-wrap gap-4"
+              className="flex flex-wrap md:flex-nowrap gap-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
             >
               <motion.a
                 href="#projects"
-                className="bg-amber-500 text-neutral-900 px-8 py-3 rounded-full font-semibold flex items-center gap-2 hover:bg-amber-400 transition-colors"
+                className="bg-brand-primary text-neutral-900 px-4 py-2 md:px-8 md:py-3 rounded-full font-semibold flex items-center gap-2 hover:bg-brand-accent transition-colors text-sm md:text-base"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
                 View My Work
-                <ArrowRight size={20} />
+                <ArrowRight size={16} className="md:ml-1" />
               </motion.a>
               <motion.a
                 href="#contact"
-                className="border-2 border-amber-500 text-amber-500 px-8 py-3 rounded-full font-semibold hover:bg-amber-500 hover:text-neutral-900 transition-colors"
+                className="border-2 border-brand-primary text-brand-primary px-4 py-2 md:px-8 md:py-3 rounded-full font-semibold hover:bg-brand-primary hover:text-neutral-900 transition-colors text-sm md:text-base"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -105,34 +106,15 @@ export function HeroSection() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <motion.div
-              className="relative w-full h-[500px] rounded-2xl overflow-hidden"
-              animate={{
-                y: [0, -20, 0],
-              }}
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-                ease: 'easeInOut',
-              }}
-            >
+            <div className="relative w-full h-[550px] rounded-2xl" >
               <img
                 src={personalInfo.avatar}
                 alt={personalInfo.name}
-                className="w-full h-full object-cover"
+                className="object-contain scale-125"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-neutral-900 via-transparent to-transparent"></div>
-            </motion.div>
-            <motion.div
-              className="absolute -bottom-4 -right-4 w-72 h-72 bg-amber-500 rounded-full opacity-20 blur-3xl"
-              animate={{
-                scale: [1, 1.2, 1],
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-              }}
-            />
+              <div className="absolute inset-0 from-neutral-900 via-transparent to-transparent"></div>
+            </div>
+            <div className="absolute -bottom-4 -right-4 w-72 h-72 rounded-full opacity-20 blur-3xl" />
           </motion.div>
         </div>
       </div>

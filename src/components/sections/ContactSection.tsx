@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Mail, MapPin, Phone, Send } from 'lucide-react';
 import { personalInfo, socialLinks } from '@/src/lib/portfolio-data';
 import { Github, Linkedin, Twitter } from 'lucide-react';
+import { SectionHeading } from '../ui/SectionHeading';
 
 export function ContactSection() {
   return (
@@ -16,8 +17,11 @@ export function ContactSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-5xl font-bold text-white mb-4">Get In Touch</h2>
-          <div className="w-24 h-1 bg-amber-500 mx-auto mb-6"></div>
+          <SectionHeading
+            backgroundText="Contact"
+            title="Get In Touch"
+            align="center"   // or "center" or "right"
+          />
           <p className="text-neutral-400 text-lg max-w-2xl mx-auto">
             Have a project in mind? Let's work together to create something amazing
           </p>
@@ -33,8 +37,8 @@ export function ContactSection() {
             <h3 className="text-2xl font-bold text-white mb-6">Contact Information</h3>
             <div className="space-y-6 mb-8">
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-amber-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Mail className="text-amber-500" size={24} />
+                <div className="w-12 h-12 bg-brand-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <Mail className="text-brand-primary" size={24} />
                 </div>
                 <div>
                   <h4 className="text-white font-semibold mb-1">Email</h4>
@@ -42,8 +46,8 @@ export function ContactSection() {
                 </div>
               </div>
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-amber-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Phone className="text-amber-500" size={24} />
+                <div className="w-12 h-12 bg-brand-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <Phone className="text-brand-primary" size={24} />
                 </div>
                 <div>
                   <h4 className="text-white font-semibold mb-1">Phone</h4>
@@ -51,8 +55,8 @@ export function ContactSection() {
                 </div>
               </div>
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-amber-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <MapPin className="text-amber-500" size={24} />
+                <div className="w-12 h-12 bg-brand-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <MapPin className="text-brand-primary" size={24} />
                 </div>
                 <div>
                   <h4 className="text-white font-semibold mb-1">Location</h4>
@@ -67,7 +71,7 @@ export function ContactSection() {
                   href={socialLinks.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-12 h-12 bg-neutral-900 rounded-lg flex items-center justify-center hover:bg-amber-500 transition-colors group"
+                  className="w-12 h-12 bg-neutral-900 rounded-lg flex items-center justify-center hover:bg-brand-primary transition-colors group"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                 >
@@ -79,7 +83,7 @@ export function ContactSection() {
                   href={socialLinks.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-12 h-12 bg-neutral-900 rounded-lg flex items-center justify-center hover:bg-amber-500 transition-colors group"
+                  className="w-12 h-12 bg-neutral-900 rounded-lg flex items-center justify-center hover:bg-brand-primary transition-colors group"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                 >
@@ -91,7 +95,7 @@ export function ContactSection() {
                   href={socialLinks.twitter}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-12 h-12 bg-neutral-900 rounded-lg flex items-center justify-center hover:bg-amber-500 transition-colors group"
+                  className="w-12 h-12 bg-neutral-900 rounded-lg flex items-center justify-center hover:bg-brand-primary transition-colors group"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                 >
@@ -113,7 +117,7 @@ export function ContactSection() {
                 <label className="text-white font-medium mb-2 block">Name</label>
                 <input
                   type="text"
-                  className="w-full bg-neutral-800 border border-neutral-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-amber-500 transition-colors"
+                  className="w-full bg-neutral-800 border border-neutral-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brand-primary transition-colors"
                   placeholder="Your name"
                 />
               </div>
@@ -121,7 +125,7 @@ export function ContactSection() {
                 <label className="text-white font-medium mb-2 block">Email</label>
                 <input
                   type="email"
-                  className="w-full bg-neutral-800 border border-neutral-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-amber-500 transition-colors"
+                  className="w-full bg-neutral-800 border border-neutral-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brand-primary transition-colors"
                   placeholder="your@email.com"
                 />
               </div>
@@ -129,13 +133,13 @@ export function ContactSection() {
                 <label className="text-white font-medium mb-2 block">Message</label>
                 <textarea
                   rows={5}
-                  className="w-full bg-neutral-800 border border-neutral-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-amber-500 transition-colors resize-none"
+                  className="w-full bg-neutral-800 border border-neutral-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brand-primary transition-colors resize-none"
                   placeholder="Your message..."
                 ></textarea>
               </div>
               <motion.button
                 type="submit"
-                className="w-full bg-amber-500 text-neutral-900 px-6 py-3 rounded-lg font-semibold flex items-center justify-center gap-2 hover:bg-amber-400 transition-colors"
+                className="w-full bg-brand-primary text-neutral-900 px-6 py-3 rounded-lg font-semibold flex items-center justify-center gap-2 hover:bg-brand-accent transition-colors"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >

@@ -22,7 +22,7 @@ export function Footer() {
               animate={{ scale: [1, 1.2, 1] }}
               transition={{ duration: 1, repeat: Infinity }}
             >
-              <Heart className="text-amber-500 fill-amber-500" size={16} />
+              <Heart className="text-brand-primary fill-brand-primary" size={16} />
             </motion.span>{' '}
             by Portfolio | {currentYear}
           </p>

@@ -3,21 +3,13 @@
 import { motion } from 'framer-motion';
 import { Mail, MapPin, Phone } from 'lucide-react';
 import { personalInfo, stats } from '@/src/lib/portfolio-data';
+import { SectionHeading } from '@/src/components/ui/SectionHeading';
 
 export function AboutSection() {
   return (
     <section id="about" className="py-20 bg-neutral-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-5xl font-bold text-white mb-4">About Me</h2>
-          <div className="w-24 h-1 bg-amber-500 mx-auto"></div>
-        </motion.div>
+
 
         <div className="grid md:grid-cols-2 gap-12 items-center mb-20">
           <motion.div
@@ -33,7 +25,7 @@ export function AboutSection() {
                 alt={personalInfo.name}
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/60 to-transparent"></div>
+              <div className="absolute inset-0 from-neutral-900/60 to-transparent"></div>
             </div>
             <motion.div
               className="absolute -bottom-6 -right-6 w-48 h-48 bg-amber-500 rounded-full opacity-20 blur-3xl -z-10"
@@ -53,6 +45,12 @@ export function AboutSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
+            <SectionHeading
+              backgroundText="About"
+              title="About Me"
+              align="left"   // or "center" or "right"
+            />
+
             <h3 className="text-3xl font-bold text-white mb-6">
               {personalInfo.title}
             </h3>

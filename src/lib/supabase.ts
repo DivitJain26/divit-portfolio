@@ -13,18 +13,13 @@ export interface Project {
   image_url: string;
   github_url?: string;
   live_url?: string;
-  order_index: number;
-  created_at: string;
 }
 
 export interface Skill {
   id: string;
   name: string;
   icon_name: string;
-  proficiency: number;
   category: string;
-  order_index: number;
-  created_at: string;
 }
 
 export async function getProjects(): Promise<Project[]> {
