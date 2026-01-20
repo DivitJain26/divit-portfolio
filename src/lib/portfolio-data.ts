@@ -6,6 +6,7 @@ export const personalInfo = {
   title: 'Full Stack Developer',
   subtitle: 'Building Digital Experiences',
   bio: 'Passionate developer with expertise in creating modern web applications. I specialize in React, Next.js, and Node.js, bringing ideas to life through clean code and intuitive design.',
+  about: 'Passionate developer with expertise in creating modern web applications. I specialize in React, Next.js, and Node.js, bringing ideas to life through clean code and intuitive design.',
   email: 'john.doe@example.com',
   phone: '+1 (555) 123-4567',
   location: 'San Francisco, CA',

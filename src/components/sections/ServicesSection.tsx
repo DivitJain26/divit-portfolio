@@ -1,13 +1,12 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { services } from '@/src/lib/portfolio-data';
 import { SectionHeading } from '@/src/components/ui/SectionHeading';
 import { ServicesGrid } from '@/src/components/ui/ServicesGrid';
 
 export function ServicesSection() {
   return (
-    <section id="services" className="py-20 bg-neutral-900">
+    <section id="services" className="py-15 bg-neutral-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Heading */}
@@ -16,7 +15,7 @@ export function ServicesSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-8 md:mb-16"
         >
           <SectionHeading
             backgroundText="Services"

@@ -12,9 +12,10 @@ interface Service {
 interface ServiceCardProps {
   service: Service;
   index: number;
+  compact?: boolean; // for mobile
 }
 
-export function ServiceCard({ service, index }: ServiceCardProps) {
+export function ServiceCard({ service, index, compact }: ServiceCardProps) {
   const Icon = (LucideIcons as any)[service.icon] || LucideIcons.Code;
 
   return (
@@ -23,22 +24,33 @@ export function ServiceCard({ service, index }: ServiceCardProps) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      whileHover={{ y: -10 }}
-      className="bg-neutral-800 p-8 rounded-xl border border-neutral-700 hover:border-brand-primary transition-all duration-300 group"
+      whileHover={{ scale: compact ? 1 : 1.03 }} // slight scale instead of spin
+      className={`
+        bg-neutral-800 
+        rounded-xl 
+        border border-neutral-700 
+        hover:border-brand-primary 
+        transition-all duration-300 
+        group
+        ${compact ? 'p-4' : 'p-8'}
+      `}
     >
       <motion.div
-        className="w-16 h-16 bg-brand-primary/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-brand-primary/20 transition-colors"
-        whileHover={{ rotate: 360 }}
-        transition={{ duration: 0.6 }}
+        className={`
+          flex items-center justify-center mb-4 
+          ${compact ? 'w-12 h-12' : 'w-16 h-16'} 
+          bg-brand-primary/10 rounded-lg 
+          group-hover:bg-brand-primary/20 transition-colors
+        `}
       >
-        <Icon className="text-brand-primary" size={32} />
+        <Icon className="text-brand-primary" size={compact ? 24 : 32} />
       </motion.div>
 
-      <h3 className="text-xl font-bold text-white mb-4">
+      <h3 className={`font-bold text-white mb-2 ${compact ? 'text-lg' : 'text-xl'}`}>
         {service.title}
       </h3>
 
-      <p className="text-neutral-400 leading-relaxed">
+      <p className={`text-neutral-400 leading-relaxed ${compact ? 'text-sm' : 'text-base'}`}>
         {service.description}
       </p>
     </motion.div>

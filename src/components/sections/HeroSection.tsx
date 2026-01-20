@@ -9,7 +9,7 @@ export function HeroSection() {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-900"
+      className="min-h-[90vh] md:min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-900"
     >
       <div className="absolute inset-0 bg-black bg-cover bg-center"></div>
 
@@ -35,6 +35,24 @@ export function HeroSection() {
         ))}
       </div>
 
+      {/* Mobile background image */}
+      <motion.div
+        className="absolute inset-0 md:hidden z-0 flex items-end justify-center"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.35 }}
+        transition={{ duration: 1 }}
+      >
+        <img
+          src={personalInfo.avatar}
+          alt={personalInfo.name}
+          className="w-full scale-120 mr-15 object-contain object-bottom translate-y-12"
+        />
+
+        {/* Mobile gradient overlay for readability */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+      </motion.div>
+
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-25 relative z-10">
         <div className="grid md:grid-cols-2 gap-6 items-center">
           <motion.div
@@ -51,7 +69,7 @@ export function HeroSection() {
               Hello, I&apos;m
             </motion.span>
             <motion.h1
-              className="text-5xl md:text-7xl font-bold text-white mt-4 mb-6"
+              className="text-5xl md:text-7xl font-bold text-white mt-4 mb-4 md:mb-6"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
@@ -59,7 +77,7 @@ export function HeroSection() {
               {personalInfo.name}
             </motion.h1>
             <motion.h2
-              className="text-2xl md:text-3xl text-neutral-300 mb-6"
+              className="text-xl md:text-3xl text-neutral-300 mb-4 md:mb-6"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
@@ -67,7 +85,7 @@ export function HeroSection() {
               {personalInfo.title}
             </motion.h2>
             <motion.p
-              className="text-neutral-400 text-lg mb-8 max-w-lg"
+              className="text-neutral-400 text-[0.9rem] md:text-lg mb-8 max-w-lg"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
@@ -112,9 +130,7 @@ export function HeroSection() {
                 alt={personalInfo.name}
                 className="object-contain scale-125"
               />
-              <div className="absolute inset-0 from-neutral-900 via-transparent to-transparent"></div>
             </div>
-            <div className="absolute -bottom-4 -right-4 w-72 h-72 rounded-full opacity-20 blur-3xl" />
           </motion.div>
         </div>
       </div>
