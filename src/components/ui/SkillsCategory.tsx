@@ -11,7 +11,7 @@ interface SkillsCategoryProps {
 
 export function SkillsCategory({ category, skills }: SkillsCategoryProps) {
   return (
-    <div className="mb-14">
+    <div className="mb-10">
 
       {/* Category Title */}
       <motion.h3
@@ -19,7 +19,7 @@ export function SkillsCategory({ category, skills }: SkillsCategoryProps) {
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        className="text-2xl font-bold text-brand-primary mb-6 capitalize"
+        className="text-2xl font-bold text-brand-primary mb-4 capitalize"
       >
         {category}
       </motion.h3>

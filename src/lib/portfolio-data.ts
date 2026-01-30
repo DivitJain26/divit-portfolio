@@ -1,5 +1,5 @@
 import { v4 as uuid } from "uuid";
-import { Project, Skill } from "./supabase";
+import { Project, Skill, SocialLink } from "./supabase";
 
 export const personalInfo = {
   name: 'Divit Jain',
@@ -15,12 +15,26 @@ export const personalInfo = {
   heroImage: 'https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=1200',
 };
 
-export const socialLinks = {
-  github: 'https://github.com',
-  linkedin: 'https://linkedin.com',
-  twitter: 'https://twitter.com',
-  email: 'mailto:john.doe@example.com',
-};
+export const socialLinks: SocialLink[] = [
+  {
+    id: 'github',
+    name: 'GitHub',
+    url: 'https://github.com/DivitJain26',
+    icon: 'devicon-github-original',
+  },
+  {
+    id: 'linkedin',
+    name: 'LinkedIn',
+    url: 'https://linkedin.com/in/divitjain',
+    icon: 'devicon-linkedin-plain',
+  },
+  {
+    id: 'twitter',
+    name: 'Twitter',
+    url: 'https://twitter.com',
+    icon: 'devicon-twitter-original',
+  },
+];
 
 export const services = [
   {
@@ -63,6 +77,15 @@ export const stats = [
 ];
 
 export const projects: Project[] = [
+  {
+    id: uuid(),
+    title: "VAK - Voice Abuse Kill Switch",
+    subtitle: "AI-powered toxicity detection platform",
+    description: "A social platform with AI moderation A social platform with AI moderationA social platform with AI moderationA social platform with AI moderationA social platform with AI moderation",
+    image_url: "/vak.png",
+    github_url: "https://github.com/DivitJain26/vak",
+    live_url: "https://vak.vercel.app"
+  },
   {
     id: uuid(),
     title: "VAK - Voice Abuse Kill Switch",

@@ -5,6 +5,7 @@ import { Mail, MapPin, Phone, Send } from 'lucide-react';
 import { personalInfo, socialLinks } from '@/src/lib/portfolio-data';
 import { Github, Linkedin, Twitter } from 'lucide-react';
 import { SectionHeading } from '../ui/SectionHeading';
+import { SocialIcon } from '../ui/SocialIcon';
 
 export function ContactSection() {
   return (
@@ -66,42 +67,14 @@ export function ContactSection() {
             </div>
 
             <div className="flex gap-4">
-              {socialLinks.github && (
-                <motion.a
-                  href={socialLinks.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-12 h-12 bg-neutral-900 rounded-lg flex items-center justify-center hover:bg-brand-primary transition-colors group"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                >
-                  <Github className="text-neutral-400 group-hover:text-neutral-900" size={20} />
-                </motion.a>
-              )}
-              {socialLinks.linkedin && (
-                <motion.a
-                  href={socialLinks.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-12 h-12 bg-neutral-900 rounded-lg flex items-center justify-center hover:bg-brand-primary transition-colors group"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                >
-                  <Linkedin className="text-neutral-400 group-hover:text-neutral-900" size={20} />
-                </motion.a>
-              )}
-              {socialLinks.twitter && (
-                <motion.a
-                  href={socialLinks.twitter}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-12 h-12 bg-neutral-900 rounded-lg flex items-center justify-center hover:bg-brand-primary transition-colors group"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                >
-                  <Twitter className="text-neutral-400 group-hover:text-neutral-900" size={20} />
-                </motion.a>
-              )}
+              {socialLinks.map((social) => (
+                <SocialIcon
+                  key={social.id}
+                  name={social.name}
+                  url={social.url}
+                  icon={social.icon}
+                />
+              ))}
             </div>
           </motion.div>
 

@@ -22,6 +22,13 @@ export interface Skill {
   category: string;
 }
 
+export type SocialLink = {
+  id: string;
+  name: string;
+  url: string;
+  icon: string; // devicon or lucide key
+};
+
 export async function getProjects(): Promise<Project[]> {
   const { data, error } = await supabase
     .from('projects')

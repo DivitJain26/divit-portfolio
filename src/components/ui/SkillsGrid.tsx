@@ -13,8 +13,8 @@ export function SkillsGrid({ skills }: SkillsGridProps) {
     <div className="relative">
       <div
         className="
-          flex gap-4 overflow-x-auto pb-3
-          md:grid md:grid-cols-4 lg:grid-cols-6 md:gap-6 md:overflow-visible
+          flex gap-2 overflow-x-auto pb-3
+          md:grid md:grid-cols-4 lg:grid-cols-7 md:gap-0 md:overflow-visible
           scrollbar-hide
         "
       >
