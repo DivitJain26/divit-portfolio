@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Project } from '@/src/lib/supabase';
+import { Project } from '@/src/lib/types/portfolio';
 import { SectionHeading } from '@/src/components/ui/SectionHeading';
 import { ProjectsGrid } from '@/src/components/ui/ProjectsGrid';
 import { ProjectModal } from '@/src/components/ui/ProjectModal';
