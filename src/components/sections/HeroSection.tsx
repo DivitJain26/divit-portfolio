@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
-import { personalInfo } from '@/src/lib/portfolio-data';
+import { personalInfo } from '@/src/lib/data/personal';
 
 export function HeroSection() {
   return (
@@ -108,12 +108,12 @@ export function HeroSection() {
                 <ArrowRight size={16} className="md:ml-1" />
               </motion.a>
               <motion.a
-                href="#contact"
+                href="/Divit_Jain_Full_Stack_Developer_Resume.pdf"
                 className="border-2 border-brand-primary text-brand-primary px-4 py-2 md:px-8 md:py-3 rounded-full font-semibold hover:bg-brand-primary hover:text-neutral-900 transition-colors text-sm md:text-base"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Contact Me
+                Resume
               </motion.a>
             </motion.div>
           </motion.div>

@@ -2,7 +2,11 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, Github, X } from 'lucide-react';
-import { Project } from '@/src/lib/supabase';
+import { skills } from '@/src/lib/data/skills';
+import { projects } from '@/src/lib/data/projects';
+import { Project } from '@/src/lib/types/portfolio';
+import { getTechStack } from '@/src/lib/utils/getTechStack';
+
 
 interface ProjectModalProps {
   project: Project | null;
@@ -11,6 +15,10 @@ interface ProjectModalProps {
 
 export function ProjectModal({ project, onClose }: ProjectModalProps) {
   if (!project) return null;
+
+  const techStack = project.tech_stack
+    ? getTechStack(skills, project.tech_stack)
+    : [];
 
   return (
     <AnimatePresence>
@@ -55,14 +63,46 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
               {project.description}
             </p>
 
-            <div className="flex gap-4">
+            {techStack.length > 0 && (
+              <motion.div
+                initial="hidden"
+                animate="show"
+                variants={{
+                  hidden: {},
+                  show: {
+                    transition: { staggerChildren: 0.06 },
+                  },
+                }}
+                className="flex flex-wrap gap-3 mb-8"
+              >
+                {techStack.map(skill => (
+                  <motion.div
+                    key={skill.key}
+                    variants={{
+                      hidden: { opacity: 0, y: 8, scale: 0.95 },
+                      show: { opacity: 1, y: 0, scale: 1 },
+                    }}
+                    whileHover={{ y: -2, scale: 1.05 }}
+                    className=" group flex items-center gap-2 px-3 py-1.5 rounded-full border border-neutral-700 bg-neutral-900/60 backdrop-blur text-sm text-neutral-200 transition-all hover:border-brand-primary"
+                  >
+                    <i
+                      className={`${skill.icon_name} text-xl transition group-hover:!text-brand-primary`}
+                    />
+                    <span className="tracking-wide">{skill.name}</span>
+                  </motion.div>
+                ))}
+              </motion.div>
+            )}
+
+            <div className="flex gap-4 ">
               {project.github_url && (
                 <a
                   href={project.github_url}
                   target="_blank"
-                  className="bg-brand-primary text-neutral-900 px-6 py-3 rounded-full font-semibold flex items-center gap-2 hover:bg-brand-accent"
+                  rel="noopener noreferrer"
+                  className=" bg-brand-primary text-neutral-900 px-3 py-2 sm:px-6 sm:py-3 rounded-full font-medium sm:font-semibold text-m sm:text-base flex items-center justify-center gap-2 hover:bg-brand-accent transition active:scale-95 "
                 >
-                  <Github size={20} />
+                  <i className="devicon-github-original text-base sm:text-xl" />
                   View Code
                 </a>
               )}
@@ -71,13 +111,15 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                 <a
                   href={project.live_url}
                   target="_blank"
-                  className="border-2 border-brand-primary text-brand-primary px-6 py-3 rounded-full font-semibold flex items-center gap-2 hover:bg-brand-primary hover:text-neutral-900"
+                  rel="noopener noreferrer"
+                  className=" border border-brand-primary sm:border-2 text-brand-primary px-3 py-2 sm:px-6 sm:py-3 rounded-full font-medium sm:font-semibold text-m sm:text-base flex items-center justify-center gap-2 hover:bg-brand-primary hover:text-neutral-900 transition active:scale-95 "
                 >
-                  <ExternalLink size={20} />
+                  <ExternalLink size={16} className="sm:w-5 sm:h-5" />
                   Live Demo
                 </a>
               )}
             </div>
+
           </div>
         </motion.div>
       </motion.div>

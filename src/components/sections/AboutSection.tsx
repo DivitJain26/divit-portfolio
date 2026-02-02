@@ -2,7 +2,8 @@
 
 import { motion } from 'framer-motion';
 import { Mail, MapPin, Phone } from 'lucide-react';
-import { personalInfo, stats } from '@/src/lib/portfolio-data';
+import { stats } from '@/src/lib/data/stats';
+import { personalInfo } from '@/src/lib/data/personal';
 import { SectionHeading } from '@/src/components/ui/SectionHeading';
 import { StatCard } from '@/src/components/ui/StatCard';
 
@@ -61,15 +62,15 @@ export function AboutSection() {
             </p>
             <div className="space-y-4">
               <div className="flex items-center gap-3 text-neutral-300">
-                <Mail className="text-amber-500" size={20} />
+                <Mail className="text-brand-primary" size={20} />
                 <span>{personalInfo.email}</span>
               </div>
               <div className="flex items-center gap-3 text-neutral-300">
-                <Phone className="text-amber-500" size={20} />
+                <Phone className="text-brand-primary" size={20} />
                 <span>{personalInfo.phone}</span>
               </div>
               <div className="flex items-center gap-3 text-neutral-300">
-                <MapPin className="text-amber-500" size={20} />
+                <MapPin className="text-brand-primary" size={20} />
                 <span>{personalInfo.location}</span>
               </div>
             </div>

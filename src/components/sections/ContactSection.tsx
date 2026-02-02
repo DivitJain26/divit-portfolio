@@ -2,12 +2,62 @@
 
 import { motion } from 'framer-motion';
 import { Mail, MapPin, Phone, Send } from 'lucide-react';
-import { personalInfo, socialLinks } from '@/src/lib/portfolio-data';
-import { Github, Linkedin, Twitter } from 'lucide-react';
+import { personalInfo } from '@/src/lib/data/personal';
+import { socialLinks } from '@/src/lib/data/socials';
 import { SectionHeading } from '../ui/SectionHeading';
 import { SocialIcon } from '../ui/SocialIcon';
+import { Input } from '../ui/Input';
+import axios from 'axios';
+import { useState, useRef } from 'react';
+import { Textarea } from '../ui/Textarea';
+
 
 export function ContactSection() {
+  const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const formRef = useRef<HTMLFormElement | null>(null);
+  const submittingRef = useRef(false);
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  e.preventDefault();
+
+  // 🔒 hard guard against double submit
+  if (submittingRef.current) return;
+  submittingRef.current = true;
+
+  setLoading(true);
+  setStatus('idle');
+
+  const formData = new FormData(formRef.current!);
+
+  const payload = {
+    name: formData.get('name'),
+    email: formData.get('email'),
+    message: formData.get('message'),
+  };
+
+  try {
+    const res = await axios.post('/api/contact', payload, {
+      headers: { 'Content-Type': 'application/json' },
+      validateStatus: () => true,
+    });
+
+    if (res.status === 200 && res.data?.success) {
+      setStatus('success');
+      formRef.current?.reset(); 
+    } else {
+      setStatus('error');
+    }
+  } catch (err) {
+    console.error(err);
+    setStatus('error');
+  } finally {
+    submittingRef.current = false;
+    setLoading(false);
+  }
+}
+
+
   return (
     <section id="contact" className="py-20 bg-neutral-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -79,6 +129,8 @@ export function ContactSection() {
           </motion.div>
 
           <motion.form
+            onSubmit={handleSubmit}
+            ref={formRef}
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -86,39 +138,26 @@ export function ContactSection() {
             className="bg-neutral-900 p-8 rounded-2xl border border-neutral-700"
           >
             <div className="space-y-6">
-              <div>
-                <label className="text-white font-medium mb-2 block">Name</label>
-                <input
-                  type="text"
-                  className="w-full bg-neutral-800 border border-neutral-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brand-primary transition-colors"
-                  placeholder="Your name"
-                />
-              </div>
-              <div>
-                <label className="text-white font-medium mb-2 block">Email</label>
-                <input
-                  type="email"
-                  className="w-full bg-neutral-800 border border-neutral-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brand-primary transition-colors"
-                  placeholder="your@email.com"
-                />
-              </div>
-              <div>
-                <label className="text-white font-medium mb-2 block">Message</label>
-                <textarea
-                  rows={5}
-                  className="w-full bg-neutral-800 border border-neutral-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brand-primary transition-colors resize-none"
-                  placeholder="Your message..."
-                ></textarea>
-              </div>
+              <Input label="Name" name="name" placeholder="Your name" />
+              <Input label="Email" name="email" type="email" placeholder="your@email.com" />
+              <Textarea label="Message" name="message" placeholder="Your message..." />
+
               <motion.button
                 type="submit"
-                className="w-full bg-brand-primary text-neutral-900 px-6 py-3 rounded-lg font-semibold flex items-center justify-center gap-2 hover:bg-brand-accent transition-colors"
+                disabled={loading}
+                className="w-full bg-brand-primary text-neutral-900 px-6 py-3 rounded-lg font-semibold flex items-center justify-center gap-2 disabled:opacity-60"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                Send Message
+                {loading ? 'Sending...' : 'Send Message'}
                 <Send size={20} />
               </motion.button>
+              {status === 'success' && (
+                <p className="text-green-400 text-sm">Message sent successfully!</p>
+              )}
+              {status === 'error' && (
+                <p className="text-red-400 text-sm">Something went wrong.</p>
+              )}
             </div>
           </motion.form>
         </div>

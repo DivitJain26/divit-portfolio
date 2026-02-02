@@ -1,8 +1,8 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ExternalLink, Github } from 'lucide-react';
-import { Project } from '@/src/lib/supabase';
+import { ExternalLink } from 'lucide-react';
+import { Project } from '@/src/lib/types/portfolio';
 
 interface ProjectCardProps {
   project: Project;
@@ -20,7 +20,7 @@ export function ProjectCard({ project, onClick }: ProjectCardProps) {
       className="group min-w-[280px] md:min-w-0 cursor-pointer"
       onClick={onClick}
     >
-      <div className="relative overflow-hidden rounded-xl bg-neutral-800 border border-neutral-700 group-hover:border-brand-primary transition-all duration-300">
+      <div className="relative h-full overflow-hidden rounded-xl bg-neutral-800 border hover:border-2 border-neutral-700 group-hover:border-brand-primary transition-all duration-300 flex flex-col">
         <div className="relative h-64 overflow-hidden">
           <img
             src={project.image_url}
@@ -30,7 +30,7 @@ export function ProjectCard({ project, onClick }: ProjectCardProps) {
           <div className="absolute inset-0 bg-gradient-to-t from-neutral-900 via-neutral-900/50 to-transparent opacity-60"></div>
         </div>
 
-        <div className="p-6">
+        <div className="p-4 flex flex-col flex-1">
           <h3 className="text-xl font-bold text-white mb-2 group-hover:text-brand-primary transition-colors">
             {project.title}
           </h3>
@@ -38,7 +38,7 @@ export function ProjectCard({ project, onClick }: ProjectCardProps) {
             {project.subtitle}
           </p>
 
-          <div className="flex gap-3">
+          <div className="flex gap-4 mt-auto">
             {project.github_url && (
               <a
                 href={project.github_url}
@@ -47,7 +47,7 @@ export function ProjectCard({ project, onClick }: ProjectCardProps) {
                 className="text-neutral-400 hover:text-brand-primary"
                 onClick={(e) => e.stopPropagation()}
               >
-                <Github size={20} />
+                <i className="devicon-github-original text-2xl sm:text-xl" />
               </a>
             )}
 
@@ -59,7 +59,7 @@ export function ProjectCard({ project, onClick }: ProjectCardProps) {
                 className="text-neutral-400 hover:text-brand-primary"
                 onClick={(e) => e.stopPropagation()}
               >
-                <ExternalLink size={20} />
+                <ExternalLink className="size-6 md:size-5"/>
               </a>
             )}
           </div>

@@ -1,6 +1,6 @@
 'use client';
 
-import { services } from '@/src/lib/portfolio-data';
+import { services } from '@/src/lib/data/services';
 import { ServiceCard } from '@/src/components/ui/ServiceCard';
 
 export function ServicesGrid() {

@@ -7,7 +7,8 @@ import { ProjectsSection } from "../components/sections/ProjectsSection";
 import { ServicesSection } from "../components/sections/ServicesSection";
 import { SkillsSection } from "../components/sections/SkillsSection";
 
-import { skills, projects } from "../lib/portfolio-data";
+import { skills } from "../lib/data/skills";
+import { projects } from "../lib/data/projects";
 
 export default function Home() {
   return (

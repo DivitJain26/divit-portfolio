@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Skill } from '@/src/lib/supabase';
+import { Skill } from '@/src/lib/types/portfolio';
 import { SectionHeading } from '@/src/components/ui/SectionHeading';
 import { SkillsCategory } from '@/src/components/ui/SkillsCategory';
 
@@ -10,6 +10,7 @@ interface SkillsSectionProps {
 }
 
 export function SkillsSection({ skills }: SkillsSectionProps) {
+  const featuredSkills = skills.filter(skill => skill.featured);
   const categories = Array.from(new Set(skills.map(skill => skill.category)));
 
   return (
@@ -40,7 +41,7 @@ export function SkillsSection({ skills }: SkillsSectionProps) {
           <SkillsCategory
             key={category}
             category={category}
-            skills={skills.filter(skill => skill.category === category)}
+            skills={featuredSkills.filter(skill => skill.category === category)}
           />
         ))}
 

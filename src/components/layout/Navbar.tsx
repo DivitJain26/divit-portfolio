@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { personalInfo } from '@/src/lib/portfolio-data';
+import { personalInfo } from "../../lib/data/personal";
 
 const navItems = [
   { label: 'Home', href: '#home' },
