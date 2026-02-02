@@ -1,6 +1,6 @@
 'use client';
 
-import { Project } from '@/src/lib/supabase';
+import { Project } from '@/src/lib/types/portfolio';
 import { ProjectCard } from './ProjectCard';
 
 interface ProjectsGridProps {

@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Skill } from '@/src/lib/supabase';
+import { Skill } from '@/src/lib/types/portfolio';
 import { SkillsGrid } from './SkillsGrid';
 
 interface SkillsCategoryProps {
