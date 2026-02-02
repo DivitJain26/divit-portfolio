@@ -22,7 +22,7 @@ export async function GET() {
 
 		const data = await res.json();
 
-		const rawPRs = data.total_count ?? 0;
+		const rawPRs = data.total_count ?? null;
 		const roundedPRs = Math.floor(rawPRs / 1) * 1;
 
 		return NextResponse.json({
@@ -30,6 +30,6 @@ export async function GET() {
 		});
 	} catch (error) {
 		console.error('GitHub PR fetch failed:', error);
-		return NextResponse.json({ prs: 0 });
+		return NextResponse.json({ prs: null });
 	}
 }

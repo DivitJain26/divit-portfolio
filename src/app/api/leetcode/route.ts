@@ -22,7 +22,7 @@ export async function GET() {
 		}
 
 		const data = await res.json();
-		const solvedRaw = data.solvedProblem ?? data.totalSolved ?? 0;
+		const solvedRaw = data.solvedProblem ?? data.totalSolved ?? null;
 		const roundedSolved = Math.floor(solvedRaw / 1) * 1;
 
 		return NextResponse.json({
@@ -30,7 +30,7 @@ export async function GET() {
 		});
 	} catch (error) {
 		return NextResponse.json(
-			{ solved: -1 },
+			{ solved: null },
 			{ status: 500 }
 		);
 	}

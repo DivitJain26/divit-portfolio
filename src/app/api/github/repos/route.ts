@@ -34,6 +34,6 @@ export async function GET() {
 		});
 	} catch (error) {
 		console.error('Repo fetch failed:', error);
-		return NextResponse.json({ repos: 0 });
+		return NextResponse.json({ repos: null });
 	}
 }
