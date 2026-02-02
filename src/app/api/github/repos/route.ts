@@ -20,10 +20,15 @@ export async function GET() {
 			}
 		);
 
-		const repos = await res.json();
+		const data = await res.json();
+
+		if (!Array.isArray(data)) {
+			console.error('GitHub repos API error:', data);
+			return NextResponse.json({ repos: null });
+		}
 
 		// only repos you created, not forks
-		const ownRepos = repos.filter(
+		const ownRepos = data.filter(
 			(repo: any) => !repo.fork && repo.owner.login === username
 		);
 

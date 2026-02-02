@@ -26,13 +26,20 @@ export async function GET() {
 		}
 
 		const data = await res.json();
-		const solvedRaw = data.solvedProblem ?? data.totalSolved ?? null;
+		const solvedRaw = typeof data?.solvedProblem === 'number' ? data.solvedProblem : typeof data?.totalSolved === 'number' ? data.totalSolved : null;
+
+		if (solvedRaw === null) {
+			console.error('LeetCode API bad response:', data);
+			return NextResponse.json({ solved: null });
+		}
+
 		const roundedSolved = Math.floor(solvedRaw / 1) * 1;
 
 		return NextResponse.json({
 			solved: roundedSolved,
 		});
 	} catch (error) {
+		console.error('LeetCode fetch failed:', error);
 		return NextResponse.json(
 			{ solved: null },
 			{ status: 500 }
