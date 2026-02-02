@@ -6,6 +6,10 @@ export async function GET() {
 	try {
 		const username = process.env.LEETCODE_USERNAME;
 
+		if (!process.env.LEETCODE_USERNAME) {
+			console.error('LEETCODE_USERNAME missing');
+		}
+
 		if (!username) {
 			return NextResponse.json({ solved: 0 });
 		}
