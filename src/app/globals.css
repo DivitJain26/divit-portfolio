@@ -6,9 +6,16 @@
   /* --brand-primary: 38 92% 50%; */
   /* Amber-400 HSL */
   /* --brand-accent: 38 92% 57%;  */
+  
+    /* Antique Gold */
+    /* --brand-primary: 42 78% 55%; */
+    /* Champagne */
+    /* --brand-accent: 45 85% 70%; */
 
-  --brand-primary: 174 62% 47%; /* Teal-500 */
-  --brand-accent: 176 68% 64%;  /* Teal-300 */
+  /* Teal-500 */
+  --brand-primary: 174 62% 47%; 
+  /* Teal-300 */
+  --brand-accent: 176 68% 64%;  
 
   --background: 0 0% 100%;
   --foreground: 0 0% 3.9%;
@@ -30,7 +37,7 @@
   --input: 0 0% 89.8%;
   --ring: 0 0% 3.9%;
   --radius: 0.5rem;
-  
+
   --chart-1: 12 76% 61%;
   --chart-2: 173 58% 39%;
   --chart-3: 197 37% 24%;
@@ -73,28 +80,28 @@
 
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
-  
+
   --color-card: hsl(var(--card));
   --color-card-foreground: hsl(var(--card-foreground));
-  
+
   --color-popover: hsl(var(--popover));
   --color-popover-foreground: hsl(var(--popover-foreground));
-  
+
   --color-primary: hsl(var(--primary));
   --color-primary-foreground: hsl(var(--primary-foreground));
-  
+
   --color-secondary: hsl(var(--secondary));
   --color-secondary-foreground: hsl(var(--secondary-foreground));
-  
+
   --color-muted: hsl(var(--muted));
   --color-muted-foreground: hsl(var(--muted-foreground));
-  
+
   --color-accent: hsl(var(--accent));
   --color-accent-foreground: hsl(var(--accent-foreground));
-  
+
   --color-destructive: hsl(var(--destructive));
   --color-destructive-foreground: hsl(var(--destructive-foreground));
-  
+
   --color-border: hsl(var(--border));
   --color-input: hsl(var(--input));
   --color-ring: hsl(var(--ring));
@@ -107,12 +114,23 @@
   --animate-accordion-up: accordion-up 0.2s ease-out;
 
   @keyframes accordion-down {
-    from { height: 0; }
-    to { height: var(--radix-accordion-content-height); }
+    from {
+      height: 0;
+    }
+
+    to {
+      height: var(--radix-accordion-content-height);
+    }
   }
+
   @keyframes accordion-up {
-    from { height: var(--radix-accordion-content-height); }
-    to { height: 0; }
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+
+    to {
+      height: 0;
+    }
   }
 }
 
@@ -121,13 +139,14 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
     @apply overflow-x-hidden;
   }
+
   html {
     scroll-behavior: smooth;
     @apply overflow-x-hidden;
   }
 }
-

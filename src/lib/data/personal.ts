@@ -10,4 +10,5 @@ export const personalInfo = {
   availability: 'Available for freelance',
   avatar: '/divit-jain-image.png',
   heroImage:'https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg',
+  experienceStartDate: '2024-02-01', // YYYY-MM-DD
 };

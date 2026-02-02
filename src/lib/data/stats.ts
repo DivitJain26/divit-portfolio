@@ -1,6 +1,6 @@
 export const stats = [
-  { label: 'Projects Built', value: 10 },
+  { label: 'Projects Built', value: 20 },
   { label: 'Months of Experience', value: 24 },
-  { label: 'Technologies Used', value: 15 },
-  { label: 'Open Source Contributions', value: 5 },
+  { label: 'DSA Problems Solved', value: 120 },
+  { label: 'GitHub Contributions', value: 15 },
 ];

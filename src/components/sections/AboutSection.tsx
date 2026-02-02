@@ -6,14 +6,60 @@ import { stats } from '@/src/lib/data/stats';
 import { personalInfo } from '@/src/lib/data/personal';
 import { SectionHeading } from '@/src/components/ui/SectionHeading';
 import { StatCard } from '@/src/components/ui/StatCard';
+import { useLeetCodeStats } from '@/src/hooks/useLeetCodeStats';
+import { useGitHubPRs } from '@/src/hooks/useGitHubPRs';
+import { useGitHubRepos } from '@/src/hooks/useGitHubRepos';
+import { calculateMonthsOfExperience } from '@/src/lib/utils/calculateExperience';
+
 
 export function AboutSection() {
+  const { solved, loading } = useLeetCodeStats();
+  const { prs, loading: prsLoading } = useGitHubPRs();
+  const { repos, loading: reposLoading } = useGitHubRepos();
+  const monthsOfExperience = calculateMonthsOfExperience(
+    personalInfo.experienceStartDate
+  );
+
+
+  const newStats = stats.map((stat) => {
+    if (stat.label === 'Months of Experience') {
+      return {
+        ...stat,
+        value: monthsOfExperience,
+      };
+    }
+    
+    if (stat.label === 'Projects Built') {
+      return {
+        ...stat,
+        value: reposLoading ? '...' : repos ?? 'N/A',
+      };
+    }
+
+    if (stat.label === 'DSA Problems Solved') {
+      return {
+        ...stat,
+        value: loading ? '...' : solved ?? 'N/A',
+      };
+    }
+
+    if (stat.label === 'GitHub Contributions') {
+      return {
+        ...stat,
+        value: prsLoading ? '...' : prs ?? 'N/A',
+      };
+    }
+
+    return stat;
+  });
+
+
   return (
     <section id="about" className="py-15 bg-neutral-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
 
-        <div className="grid md:grid-cols-2 gap-12 items-stretch mb-1 md:mb-20">
+        <div className="grid md:grid-cols-2 gap-12 items-stretch mb-6 md:mb-20">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -84,7 +130,7 @@ export function AboutSection() {
           transition={{ duration: 0.6 }}
           className="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-8 px-4 md:px-2"
         >
-          {stats.map((stat, index) => (
+          {newStats.map((stat, index) => (
             <StatCard
               key={stat.label}
               value={stat.value}
