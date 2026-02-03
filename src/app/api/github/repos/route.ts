@@ -5,6 +5,7 @@ export async function GET() {
 	const token = process.env.GITHUB_TOKEN;
 
 	if (!username || !token) {
+		console.error('GitHub username or token not set in environment variables.');
 		return NextResponse.json({ repos: 0 });
 	}
 

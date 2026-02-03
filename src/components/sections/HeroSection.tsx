@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { personalInfo } from '@/src/lib/data/personal';
@@ -39,7 +38,7 @@ export function HeroSection() {
       <motion.div
         className="absolute inset-0 md:hidden z-0 flex items-end justify-center"
         initial={{ opacity: 0 }}
-        animate={{ opacity: 0.35 }}
+        animate={{ opacity: 0.65 }}
         transition={{ duration: 1 }}
       >
         <img

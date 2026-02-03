@@ -2,20 +2,15 @@
 
 /* 1. Define your raw CSS variables for Light/Dark mode */
 :root {
-  /* Amber-500 HSL */
-  /* --brand-primary: 38 92% 50%; */
-  /* Amber-400 HSL */
-  /* --brand-accent: 38 92% 57%;  */
+  /* Gold */
+  /* --brand-primary: 42 78% 55%; */
+  /* --brand-accent: 45 85% 70%; */
   
-    /* Antique Gold */
-    /* --brand-primary: 42 78% 55%; */
-    /* Champagne */
-    /* --brand-accent: 45 85% 70%; */
-
-  /* Teal-500 */
-  --brand-primary: 174 62% 47%; 
-  /* Teal-300 */
-  --brand-accent: 176 68% 64%;  
+  /* --brand-primary: 172 72% 42%;*/
+  /* --brand-accent: 170 65% 62%; */
+  
+  --brand-primary: 176 75% 46%; 
+  --brand-accent: 174 70% 64%;  
 
   --background: 0 0% 100%;
   --foreground: 0 0% 3.9%;
