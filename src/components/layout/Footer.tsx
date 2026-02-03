@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Heart } from 'lucide-react';
+import { personalInfo } from '@/src/lib/data/personal';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -24,7 +25,7 @@ export function Footer() {
             >
               <Heart className="text-brand-primary fill-brand-primary" size={16} />
             </motion.span>{' '}
-            by Portfolio | {currentYear}
+            by {personalInfo.name} | {currentYear}
           </p>
         </motion.div>
       </div>
