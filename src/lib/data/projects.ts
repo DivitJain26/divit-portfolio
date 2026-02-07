@@ -9,7 +9,7 @@ export const projects: Project[] = [
     description: 'An AI-powered social media moderation platform that detects toxic and abusive content in real time using machine learning. Features automated content flagging, moderation workflows, and a scalable full-stack architecture for safer online interactions.',
     image_url: 'https://raw.githubusercontent.com/DivitJain26/vak/main/demo-picture.png',
     github_url: 'https://github.com/DivitJain26/vak',
-    live_url: 'https://vak.vercel.app',
+    live_url: 'https://vak-tau.vercel.app/',
     tech_stack: ['reactjs', 'nextjs', 'node', 'mongodb', 'typescript', 'tailwindcss', 'python', 'flask'],
   },
   {
